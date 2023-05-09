@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomPipe } from './pipes/custom.pipe';
 
 @Component({
   selector: 'app-root',
@@ -56,12 +57,20 @@ Merhaba
 <ul>
   <li *ngFor="let name of mappedNames | keyvalue">{{name.key}} - {{name.value}}</li>
 </ul>
+
+<br>
+{{ "Custom Pip Example" | custom:10:20 }}
+
   `,
   styleUrls: ['./app.component.scss']
 
 
 })
 export class AppComponent {
+  constructor(private custom: CustomPipe) {
+    console.log(custom.transform("fasfasdfasdf", 3, 6));
+  }
+
   title = 'proj1';
 
   visible: boolean = false;
